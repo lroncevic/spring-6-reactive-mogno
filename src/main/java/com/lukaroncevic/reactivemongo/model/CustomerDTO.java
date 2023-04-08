@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 public class CustomerDTO {
 
-    private Integer id;
+    private String id;
 
     @NotBlank
     @Size(max = 255)
