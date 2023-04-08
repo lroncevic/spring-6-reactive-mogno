@@ -1,4 +1,4 @@
-package com.lukaroncevic.reactivemongo.webfn;
+package com.lukaroncevic.reactivemongo.web.fn;
 
 import com.lukaroncevic.reactivemongo.model.BeerDTO;
 import com.lukaroncevic.reactivemongo.services.BeerService;

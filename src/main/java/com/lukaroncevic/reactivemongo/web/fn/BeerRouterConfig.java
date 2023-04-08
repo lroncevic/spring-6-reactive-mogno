@@ -1,7 +1,6 @@
-package com.lukaroncevic.reactivemongo.webfn;
+package com.lukaroncevic.reactivemongo.web.fn;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
