@@ -1,5 +1,6 @@
 package com.lukaroncevic.reactivemongo.web.fn;
 
+import com.lukaroncevic.reactivemongo.domain.Beer;
 import com.lukaroncevic.reactivemongo.model.BeerDTO;
 import com.lukaroncevic.reactivemongo.services.BeerService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebInputException;
 import org.springframework.web.util.UriComponentsBuilder;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
@@ -33,8 +35,15 @@ public class BeerHandler {
     }
 
     public Mono<ServerResponse> listBeers(ServerRequest request){
+        Flux<BeerDTO> flux;
+
+        if(request.queryParam("beerStyle").isPresent()){
+            flux = beerService.findByBeerStyle(request.queryParam("beerStyle").get());
+        } else {
+            flux = beerService.listBeers();
+        }
         return ServerResponse.ok()
-                .body(beerService.listBeers(), BeerDTO.class);
+                .body(flux, BeerDTO.class);
     }
 
     public Mono<ServerResponse> getBeerById(ServerRequest request){
