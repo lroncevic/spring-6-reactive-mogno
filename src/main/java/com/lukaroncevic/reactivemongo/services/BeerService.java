@@ -1,10 +1,13 @@
 package com.lukaroncevic.reactivemongo.services;
 
+import com.lukaroncevic.reactivemongo.domain.Beer;
 import com.lukaroncevic.reactivemongo.model.BeerDTO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BeerService {
+
+    Mono<BeerDTO> findFirstByBeerName(String beerName);
 
     Flux<BeerDTO> listBeers();
 
